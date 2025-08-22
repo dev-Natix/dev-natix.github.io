@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>XML Service Henry 2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --preto:#333;
+      --branco:#fff;
+      --azul:#1976d2;
+      --azul-clarinho:#e9f2ff;
+      --borda:#e6e6e6;
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--preto);background:var(--branco)}
+    a{color:var(--azul);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1080px;margin:0 auto;padding:24px}
+
+    /* NAVBAR #333 */
+    header{
+      position:sticky;top:0;z-index:5;
+      background:#333;color:#fff;border-bottom:1px solid #2a2a2a
+    }
+    .nav{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{height:42px;width:auto;display:block}
+    .brand{font-weight:700;font-size:18px;letter-spacing:.2px;color:#fff}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      border:1px solid var(--azul); color:var(--azul); background:transparent; font-weight:600; transition:.2s; cursor:pointer
+    }
+    .btn:hover{background:var(--azul);color:#fff;text-decoration:none}
+    .btn.solid{background:var(--azul);color:#fff;border-color:var(--azul)}
+    .btn.solid:hover{filter:brightness(.95)}
+
+    /* HERO */
+    .hero{
+      background:linear-gradient(180deg, var(--azul-clarinho) 0%, rgba(255,255,255,0) 60%);
+      border-bottom:1px solid var(--borda)
+    }
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:32px 0}
+    .hero h1{margin:0 0 12px;font-size:36px;line-height:1.1}
+    .hero p{margin:0 0 20px;font-size:16px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#fff;border:1px solid var(--borda);padding:6px 12px;border-radius:999px;font-weight:600;box-shadow:var(--shadow)
+    }
+
+    /* GENERIC */
+    h2{margin:8px 0 16px}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.hero-inner{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid var(--borda);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:20px}
+    .kpi{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;border:1px dashed var(--borda);background:#fff}
+    .kpi .dot{width:10px;height:10px;border-radius:50%;background:var(--azul)}
+    .small{font-size:13px;opacity:.8}
+    .muted{opacity:.7}
+    .tip{font-size:12px;opacity:.8;margin-top:6px}
+    .link-row{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* CODE BLOCK */
+    .xml-wrap{position:relative}
+    .xml-code{
+      font-family:ui-monospace, SFMono-Regular, Consolas, monospace;
+      background:#0f172a;color:#e2e8f0;border-radius:12px;border:1px solid #0b1223;
+      padding:16px;white-space:pre;overflow:auto;line-height:1.4
+    }
+    .xml-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+
+    /* IMAGES */
+    .img-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .img-row img{width:100%;height:auto;border-radius:12px;border:1px solid var(--borda);display:block}
+
+    /* LISTS */
+    .feat-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    .feat-list li{display:flex;gap:10px;align-items:flex-start}
+    .feat-list li::before{content:"✔";color:var(--azul);font-weight:900;margin-top:2px}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--borda);margin-top:24px;background:#f9f9f9}
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;flex-wrap:wrap}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:var(--azul-clarinho);color:var(--preto);padding:6px 10px;border-radius:999px;font-weight:600;border:1px solid #cfe3ff}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="logo-henry.png" alt="Logo Henry" />
+        <div class="brand">XML Service Henry 2.0</div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://www.henry.com.br" target="_blank" rel="noopener">Site da Henry</a>
+        <a class="btn solid" href="https://wa.me/554136610127" target="_blank" rel="noopener">Suporte WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="badge">Versão leve, resposta mais rápida</div>
+        <h1>Integração por XML simples e robusta</h1>
+        <p>
+          O XML Service Henry 2.0 lê um arquivo XML por ID de comanda e toma a decisão de
+          <strong>liberar</strong> ou <strong>bloquear</strong> a passagem na catraca Henry, operando como
+          <strong>serviço do Windows</strong> (inicialização automática).
+        </p>
+        <div class="link-row">
+          <a class="btn" href="#como-funciona">Como funciona</a>
+          <a class="btn" href="#xml-padrao">XML padrão</a>
+          <a class="btn" href="#funcionalidades">Funcionalidades</a>
+          <a class="btn" href="#capturas">Capturas</a>
+        </div>
+      </div>
+      <div class="card pad">
+        <div class="kpi"><div class="dot"></div>Evita eventos duplicados</div>
+        <div class="kpi"><div class="dot"></div>Reconexão imediata</div>
+        <div class="kpi"><div class="dot"></div>Logs com rotação automática</div>
+        <div class="kpi"><div class="dot"></div>Nome de arquivo tolerante (com/sem zeros)</div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona">
+      <h2>Como o XML Service funciona</h2>
+      <div class="grid cols-3">
+        <div class="card pad">
+          <h3>1) Evento da catraca</h3>
+          <p>A catraca envia um evento com o <strong>ID da comanda</strong>. O serviço extrai esse ID e aplica <em>debounce</em> para evitar repetições.</p>
+        </div>
+        <div class="card pad">
+          <h3>2) Leitura do XML</h3>
+          <p>O serviço busca na pasta <code>xmls/</code> um arquivo com o padrão <code>&lt;ID&gt;.xml</code>. Aceita tanto o formato curto (<code>123.xml</code>) quanto com zeros à esquerda até 20 dígitos (<code>00000000000000000123.xml</code>).</p>
+        </div>
+        <div class="card pad">
+          <h3>3) Decisão e comando</h3>
+          <p>Com base no atributo <code>EVENTO</code> do XML (<code>L</code> ou <code>C</code>), envia o comando de <strong>liberação</strong> ou <strong>bloqueio</strong> para a catraca via TCP/IP.</p>
+        </div>
+      </div>
+      <p class="tip">Há um modo opcional por <strong>timestamp</strong>, permitindo múltiplos arquivos por ID (<code>ID_YYYYMMDDHHMMSS.xml</code>), onde o mais recente é utilizado.</p>
+    </section>
+
+    <!-- XML PADRÃO -->
+    <section id="xml-padrao" style="margin-top:28px;">
+      <h2>XML padrão (gerado pelo seu sistema de caixa/PDV)</h2>
+      <div class="card pad xml-wrap">
+        <div class="small muted" style="margin-bottom:8px">Salve como <code>xmls/&lt;ID&gt;.xml</code>. Exemplo:</div>
+        <pre id="xmlExample" class="xml-code">
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;DATAPACKET&gt;&lt;ROWDATA&gt;&lt;ROW ID_COMANDA="0000000123" EVENTO="L" /&gt;&lt;/ROWDATA&gt;&lt;/DATAPACKET&gt;
+        </pre>
+        <div class="xml-actions">
+          <button class="btn solid" onclick="copyXml()">Copiar XML</button>
+          <button class="btn" onclick="downloadXml()">Baixar XML</button>
+        </div>
+        <div class="tip">
+          <strong>EVENTO:</strong> use <code>L</code> para <em>liberar</em> ou <code>C</code> para <em>consumo/bloquear</em>.
+          O serviço pode <em>excluir</em> automaticamente o XML após liberação/bloqueio conforme configuração.
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section id="funcionalidades" style="margin-top:28px;">
+      <h2>Funcionalidades</h2>
+      <div class="grid cols-2">
+        <div class="card pad">
+          <h3>Configuração</h3>
+          <ul class="feat-list">
+            <li>Conexão TCP/IP configurável (IP, porta, tempos).</li>
+            <li>Pasta dos XMLs configurável (<code>xmls/</code> por padrão).</li>
+            <li>Política quando o XML está ausente: <em>bloquear</em> ou <em>liberar</em>.</li>
+            <li>Pós-processamento: excluir XML após <em>liberar</em> e/ou <em>bloquear</em>.</li>
+            <li>Mensagens personalizáveis enviadas à catraca.</li>
+            <li>Direção do comando: <em>saída</em>, <em>entrada</em> ou <em>ambos</em>.</li>
+          </ul>
+        </div>
+        <div class="card pad">
+          <h3>Operação</h3>
+          <ul class="feat-list">
+            <li>Roda como <strong>serviço do Windows</strong> (inicia automaticamente).</li>
+            <li><strong>Leve</strong> e com <strong>resposta mais rápida</strong> em relação à versão anterior.</li>
+            <li>Reconexão automática com <em>backoff</em> progressivo.</li>
+            <li>Evita ações duplicadas.</li>
+            <li>Logs com rotação e detalhamento de eventos.</li>
+            <li>Suporte a <em>múltiplas instâncias</em> (pastas e nomes de serviço distintos).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card pad" style="margin-top:16px">
+        <h3>Compatibilidade de nome de arquivo</h3>
+        <ul class="feat-list">
+          <li>Busca tolerante: aceita <code>123.xml</code> e <code>00000000000000000123.xml</code> (até 20 dígitos).</li>
+          
+          <li>Leitura do XML no formato <code>DATAPACKET &gt; ROWDATA &gt; ROW</code> com atributos <code>ID_COMANDA</code> e <code>EVENTO</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CAPTURAS -->
+    <section id="capturas" style="margin-top:28px;">
+      <h2>Capturas das interfaces</h2>
+      <div class="img-row">
+        <figure class="card pad" style="padding:12px">
+          <img src="config.png" alt="Tela de configurações" />
+          <figcaption class="small muted" style="margin-top:8px">Configurações da conexão e política de processamento.</figcaption>
+        </figure>
+        <figure class="card pad" style="padding:12px">
+          <img src="service.png" alt="Tela do serviço" />
+          <figcaption class="small muted" style="margin-top:8px">Serviço do Windows em execução com inicialização automática.</figcaption>
+        </figure>
+      </div>
+      <div class="card pad" style="margin-top:16px">
+        <strong>Dica:</strong> registre uma segunda instância apontando para outra pasta (ex.: <code>xmls-2</code>).
+      </div>
+    </section>
+
+    <!-- ATALHOS -->
+    <section style="margin-top:28px;">
+      <h2>Atalhos úteis</h2>
+      <div class="link-row">
+        <a class="btn" href="https://www.henry.com.br" target="_blank" rel="noopener">Site da Henry</a>
+        <a class="btn solid" href="https://wa.me/554136610127" target="_blank" rel="noopener">Suporte WhatsApp</a>
+        <a class="btn" href="tel:+554136610127">Ligar</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div class="pill">XML Service Henry 2.0</div>
+      <div class="small muted">© Henry Equipamentos e Sistemas — Autor: Natã Bonfante de Oliveira</div>
+    </div>
+  </footer>
+
+  <script>
+    function getXmlText(){
+      // conteúdo real do XML (sem escapes) para copiar/baixar
+      return `<?xml version='1.0' encoding='utf-8'?>\n<DATAPACKET><ROWDATA><ROW ID_COMANDA="0000000123" EVENTO="L" /></ROWDATA></DATAPACKET>`;
+    }
+
+    async function copyXml(){
+      const xml = getXmlText();
+      try{
+        await navigator.clipboard.writeText(xml);
+        toast("XML copiado para a área de transferência.");
+      }catch(e){
+        const ta = document.createElement('textarea');
+        ta.value = xml; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        toast("XML copiado (fallback).");
+      }
+    }
+
+    function downloadXml(){
+      const xml = getXmlText();
+      const blob = new Blob([xml], {type:"application/xml"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = "exemplo.xml";
+      document.body.appendChild(a); a.click();
+      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 0);
+    }
+
+    // mini toast
+    function toast(msg){
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.position='fixed';
+      t.style.bottom='24px';
+      t.style.left='50%';
+      t.style.transform='translateX(-50%)';
+      t.style.background='#111d';
+      t.style.color='#fff';
+      t.style.padding='10px 16px';
+      t.style.borderRadius='999px';
+      t.style.boxShadow='0 8px 24px rgba(0,0,0,.2)';
+      t.style.zIndex='9999';
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), 1800);
+    }
+  </script>
+</body>
+</html>
